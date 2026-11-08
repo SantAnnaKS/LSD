@@ -3405,7 +3405,7 @@ plot_bxp_vio <- function( data, log = 0, leg = NULL, unit = "", notch = FALSE,
   data <- logX( data, log )
   data <- na.omit( data )
 
-  # prepare ggplot-frindly dataframe
+  # prepare ggplot-friendly dataframe
   dfBp <- data.frame( matrix( nrow = nExp * mcSize, ncol = 2 ) )
   i <- 1
   for( k in 1 : nExp )
@@ -3417,6 +3417,7 @@ plot_bxp_vio <- function( data, log = 0, leg = NULL, unit = "", notch = FALSE,
 
   names( dfBp ) <- c( "Experiment", unit )
   dfBp$Experiment <- as.factor( dfBp$Experiment )
+  dfBp$Experiment <- factor( dfBp$Experiment, levels = leg )  # restore order
 
   # identify extreme outliers and remove them from plot window
   stat <- ggplot_build( ggplot( dfBp, aes( Experiment, !! sym( unit ) ) ) +

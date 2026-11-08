@@ -187,9 +187,10 @@ tryCatch( {   # enter error handling mode so PDF can be closed in case of error
   cat( "Generating reports...\n" )
 
   # create the report file(s) in a daily output directory
-  repFile( repName, folder = folder, suffix = paste0( datFilSfx, "_", varName ),
-           width = plotW, height = plotH, rows = plotRows, cols = plotCols,
-           raster = raster, res = res )
+  repFile( repName, folder = folder, nCnt = nCnt,
+           suffix = paste0( datFilSfx, "_", varName ), width = plotW,
+           height = plotH, rows = plotRows, cols = plotCols, raster = raster,
+           res = res )
 
   # ------ Present sensitivity analysis for the EE model ------
 
